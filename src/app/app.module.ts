@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BreadcrumsComponent } from './shared/breadcrums/breadcrums.component';
 import { FormsBasicComponent } from './components/forms-basic/forms-basic.component';
 import { TablaBasicComponent } from './components/tabla-basic/tabla-basic.component';
+import { TipoProducto } from './components/tipo-producto/tipo-producto.component';
 import { SortableHeader } from './directives/sortable.directive';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -30,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     BreadcrumsComponent,
     FormsBasicComponent,
     TablaBasicComponent,
-    SortableHeader
+    SortableHeader,
+    TipoProducto
   ],
   imports: [
     BrowserModule,

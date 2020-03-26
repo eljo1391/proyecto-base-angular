@@ -40,7 +40,7 @@ export class SidebarService {
               iconoSubModulo:'fas fa-ad',
               subItems: [
                 {
-                  url:'',
+                  url:'tipo-producto',
                   icono:'fas fa-ad',
                   titulo:'Tipo Producto'
                 },
