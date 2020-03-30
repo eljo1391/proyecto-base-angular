@@ -1,22 +1,21 @@
 import { Component, OnInit, ViewChildren, QueryList, Input } from '@angular/core';
 import { SortableHeader, SortEvent } from 'src/app/directives/sortable.directive';
 import { Observable } from 'rxjs';
-import { TipoProductoService } from 'src/app/services/tipo-producto.service';
-import { TipoProductoModel } from 'src/app/components/tipo-producto/model/tipo-producto';
+import { CategoriaService } from 'src/app/services/categoria.service';
 import { FormBuilder, Validators, NgForm } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { CategoriaModel } from './model/categoria';
 
 
 @Component({
-  selector: 'tipo-producto',
-  templateUrl: './tipo-producto.component.html',
-  styleUrls: ['./tipo-producto.component.scss'],
-  providers: [TipoProductoService]
+  selector: 'categoria',
+  templateUrl: './categoria.component.html',
+  styleUrls: ['./categoria.component.scss'],
+  providers: [CategoriaService]
 })
-export class TipoProductoComponent implements OnInit {
-  
+export class CategoriaComponent implements OnInit {
   public band;
-  public t_producto;
+  public categoria;
 
 
   form = this.fb.group({
@@ -25,7 +24,7 @@ export class TipoProductoComponent implements OnInit {
   });
 
   constructor(
-    private service: TipoProductoService, 
+    private service: CategoriaService, 
     private fb: FormBuilder,
     private _router: Router,
     private _route: ActivatedRoute
@@ -54,7 +53,7 @@ export class TipoProductoComponent implements OnInit {
         filtros: JSON.stringify({})
     }    
     this.service.listarRecurso().subscribe( (res:any) =>{
-      this.t_producto = res;
+      this.categoria = res;
       console.log(res);//total$);
     });
     
@@ -84,8 +83,8 @@ export class TipoProductoComponent implements OnInit {
     })
   }
 
-  encontrar(t : TipoProductoModel){
-    this.service.selectTipoProducto = Object.assign({}, t);
+  encontrar(t : CategoriaModel){
+    this.service.selectCategoria = Object.assign({}, t);
   }
 
   borrar(id){
@@ -97,8 +96,8 @@ export class TipoProductoComponent implements OnInit {
   }
 
   resetForm(myForm?: NgForm){
-    this.service.selectTipoProducto = {
-      tipoProductoId: null,
+    this.service.selectCategoria = {
+      categoriaId: null,
       codigo:'',
       descripcion:''
     };

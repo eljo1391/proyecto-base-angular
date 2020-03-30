@@ -6,9 +6,10 @@
     "\\src\\app\\components",
     "\\src\\app\\components\\tipo-producto",
     "\\src\\app\\services",
+    "\\src\\app\\services\\shared",
     "\\src\\assets",
     "\\src\\assets\\data"
   ],
-  "SelectedNode": "\\src\\app\\app-routing.module.ts",
+  "SelectedNode": "\\src\\assets\\data\\table-data.json",
   "PreviewInSolutionExplorer": true
 }

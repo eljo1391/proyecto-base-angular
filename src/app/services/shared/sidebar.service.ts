@@ -13,7 +13,7 @@ export class SidebarService {
         moduloItems: [
           {
               id:'forms',
-              subModulo : 'Forms & Table',
+              subModulo : 'Reservas',
               iconoSubModulo: 'fas fa-user',
               subItems: [
                 {
@@ -28,6 +28,23 @@ export class SidebarService {
                 },
               ]
           },
+          {
+            id:'forms',
+            subModulo : 'Productos',
+            iconoSubModulo: 'fas fa-user',
+            subItems: [
+              {
+                url:'/forms',
+                icono:'fas fa-user',
+                titulo:'Form'
+              },
+              {
+                url:'/data-table',
+                icono:'fas fa-address-card',
+                titulo:'Table'
+              },
+            ]
+        },
         ]
       },
    
@@ -36,11 +53,11 @@ export class SidebarService {
         moduloItems: [
           {
               id:'submodulo2',
-              subModulo : 'SubModulo2',
+              subModulo : 'Cobranzas',
               iconoSubModulo:'fas fa-ad',
               subItems: [
                 {
-                  url:'tipo-producto',
+                  url:'',
                   icono:'fas fa-ad',
                   titulo:'Tipo Producto'
                 },
@@ -56,43 +73,31 @@ export class SidebarService {
                 }
               ]
           },
-          {
-            id:'submodulo3',
-            iconoSubModulo:'fas fa-adjust',
-            subModulo : 'SubModulo3',
-            subItems: [
-              {
-                url:'',
-                icono:'address-card',
-                titulo:'Tipo Producto'
-              },
-              {
-                url:'',
-                icono:'address-card',
-                titulo:'Tipo Documento'
-              },
-              {
-                url:'',
-                icono:'address-card',
-                titulo:'Categorias'
-              }
-            ]
-          }
-
+          
         ]
       },
       {
-        modulo:'modulon',
+        modulo:'Otros',
         moduloItems: [
           {
               id:'modulon',
               iconoSubModulo:'fas fa-align-center',
-              subModulo : 'Modulo N',
+              subModulo : 'Configuraciones',
               subItems: [
                 {
-                  url:'add',
-                  icono:'address-card',
-                  titulo:'Agregar Cliente'
+                  url:'tipo-producto',
+                  icono:'fas fa-angle-double-left',
+                  titulo:'Tipos Producto'
+                },
+                {
+                  url:'',
+                  icono:'fas fa-alipay',
+                  titulo:'Medios de Pago'
+                },
+                {
+                  url:'categorias',
+                  icono:'fas fa-angle-double-left',
+                  titulo:'Categorias'
                 }
               ]
           }
