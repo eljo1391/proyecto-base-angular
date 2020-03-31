@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TablaBasicComponent } from './tabla-basic.component';
+import { TablaBasicComponent } from 'src/app/components/tabla-basic/tabla-basic.component';
 
 describe('TablaBasicComponent', () => {
   let component: TablaBasicComponent;

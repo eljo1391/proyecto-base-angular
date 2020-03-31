@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChildren, QueryList, Input } from '@angular/core';
-import { SortableHeader, SortEvent } from 'src/app/directives/sortable.directive';
-import { Observable } from 'rxjs';
 import { CategoriaService } from 'src/app/services/categoria.service';
 import { FormBuilder, Validators, NgForm } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { CategoriaModel } from './model/categoria';
+import { CategoriaModel } from '../../../models/categoria';
+import Swal from 'sweetalert2';
+
+
 
 
 @Component({
@@ -17,7 +18,7 @@ export class CategoriaComponent implements OnInit {
   public band;
   public categoria;
 
-
+  CategoriaModel
   form = this.fb.group({
     codigo: ['', Validators.required],
     descripcion: ['', Validators.required]
@@ -58,6 +59,7 @@ export class CategoriaComponent implements OnInit {
     });
     
   }
+
   cargarPagina(page){
     console.log(page);
   }
@@ -72,7 +74,8 @@ export class CategoriaComponent implements OnInit {
     console.log(this.form.value);
     this.service.agregarRecurso(this.form.value)
     .subscribe((result: any) => {
-     this.buscar();
+
+     //this.buscar();
     });
   }
 
@@ -87,13 +90,17 @@ export class CategoriaComponent implements OnInit {
     this.service.selectCategoria = Object.assign({}, t);
   }
 
+
+  
+  
   borrar(id){
     this.service.eliminarRecurso(id).subscribe((res:any) => {
       console.log('elemento eliminado');
       this.buscar();
     });
-    
   }
+
+
 
   resetForm(myForm?: NgForm){
     this.service.selectCategoria = {
@@ -101,6 +108,43 @@ export class CategoriaComponent implements OnInit {
       codigo:'',
       descripcion:''
     };
+  }
+
+
+  showModal(){
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: '¿Esta seguro de eliminar este registro?',
+      text: "¡Esta acción no se puede revertir!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'SI, borrar!',
+      cancelButtonText: 'No, cancelar!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.value) {
+        swalWithBootstrapButtons.fire(
+          'Eliminado!',
+          'El registro ha sido eliminado.',
+          'success'
+        )
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelado',
+          'error'
+        )
+      }
+    })
   }
 
 }
